@@ -1,0 +1,10 @@
+flist='ls'
+for file in $flist
+do
+    $base=basename -s .txt $file
+# if [ $base ]
+# then
+    echo $file
+    echo "$base found"
+# fi
+done
