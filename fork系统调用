@@ -1,0 +1,13 @@
+if ((pid = fork()) < 0) 
+{ 
+perror("fork error"); 
+exit(1); 
+}
+
+if (pid == 0) 
+printf("This message is printed by the child process.\n"); 
+
+else 
+printf("PARENT PROCESS.\n"); 
+
+printf("=== The End ===\n");
