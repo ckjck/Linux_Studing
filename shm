@@ -1,0 +1,5 @@
+data = shmat( shmid, NULL, 0 ); 
+if ( data == -1 ) 
+{ 
+perror("shmat fail."); 
+}
