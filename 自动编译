@@ -1,0 +1,8 @@
+objects = main.o 
+	exec = main 
+	all:$(objects)
+		gcc –o $(exec) $(objects)
+	main.o:main.c 
+		gcc –c main.c 
+	clean:
+		rm –r $(exec) $(objects)
