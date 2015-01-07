@@ -1,0 +1,11 @@
+Void main(void)
+{
+	int fid;
+	fid = open(“./test.txt”,O_RDWR|O_CREAT); 
+	if(fid==-1)
+	{
+		Printf(“open or create error \n”);
+		exit(0);
+}
+Close(fid);
+}
