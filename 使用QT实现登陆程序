@@ -1,0 +1,39 @@
+#include <QtGui/QtGui>
+#include "window.h"
+CWinDlg::CWinDlg(QWidget* parent) : QDialog(parent)
+{	
+	setWindowTitle("Example");       /*设置窗口的标题*/
+	Edit1    = new QLineEdit;        /*创建一个Edit1和一个Buttion1*/
+	Button1  = new QPushButton("OK");
+	Edit1->setEchoMode(QLineEdit::Password);
+	QVBoxLayout* Layout1 = new QVBoxLayout; /*创建一个布局对像Layout1*/
+	Layout1->addWidget(Edit1);     /*把Edit1加入到Layout1*/
+	Layout1->addWidget(Button1);   /*把Button1加入到Layout1*/
+	（1）  setLayout(Layout1);        /*应用Layout1布局*/
+	 (2)  connect(Button1, SIGNAL(clicked()), this, SLOT(function()));     /*建立Signal-Slot,使button1与function()相关联*/
+}
+CWinDlg::~CWinDlg()
+{	
+	delete Edit1;                  /*删除Edit1与Button1对象*/
+	delete Button1;
+}
+void CWinDlg::function()
+{	
+	if(Edit1->text() == "example")   /*如果Edit1输入"example"*/
+	{	                             /*显示"Pass!"消息框*/
+	QMessageBox::warning(this, "warning", "Pass!", QMessageBox::Yes); 
+	}
+	else
+	{		                        /*显示"Error!"消息框*/
+		QMessageBox::warning(this, "warning", "Error!", QMessageBox::Yes);
+	}
+}
+
+#include <QtGui/QtGui>
+#include "window.h"
+int main(int argc, char* argv[])
+{
+	QApplication app(argc, argv); /*创建QT应用程序*/
+	CWinDlg dlg;                  /*创建窗口*/
+	return dlg.exec();	/*运行程序*/
+}
